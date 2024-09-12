@@ -46,17 +46,26 @@ function multiplyBy(arr, multiplier) {
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
+// function filterOut(arr, arrFilter) {
+//   if (!arr.length) return null;
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < arrFilter.length; j++) {
+//       if (arr[i] === arrFilter[j]) {
+//         arr.splice(i, 1);
+//         i--;
+//       }
+//     }
+//   }
+//   return arr;
+// }
+
 function filterOut(arr, arrFilter) {
   if (!arr.length) return null;
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arrFilter.length; j++) {
-      if (arr[i] === arrFilter[j]) {
-        arr.splice(i, 1);
-        i--;
-      }
-    }
-  }
-  return arr;
+  let filteredWords = [];
+  arr.forEach((e) => {
+    if (!arrFilter.includes(e)) filteredWords.push(e);
+  });
+  return filteredWords;
 }
 
 // Iteration 5 | Unique Arrays
@@ -76,19 +85,28 @@ const duplicateWords = [
   "bring",
 ];
 
+// function uniquifyArray(arr) {
+//   if (!arr.length) return null;
+//   let word;
+//   for (let i = 0; i < arr.length; i++) {
+//     word = arr[i];
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (word === arr[j]) {
+//         arr.splice(j, 1);
+//         j--;
+//       }
+//     }
+//   }
+//   return arr;
+// }
+
 function uniquifyArray(arr) {
   if (!arr.length) return null;
-  let word;
-  for (let i = 0; i < arr.length; i++) {
-    word = arr[i];
-    for (let j = i + 1; j < arr.length; j++) {
-      if (word === arr[j]) {
-        arr.splice(j, 1);
-        j--;
-      }
-    }
-  }
-  return arr;
+  let unique = [];
+  arr.forEach((e) => {
+    if (!unique.includes(e)) unique.push(e);
+  });
+  return unique;
 }
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -223,5 +241,4 @@ function greatestProduct(matrix) {
   return greatestProduct;
 }
 
-console.log(greatestProduct(matrix))
-
+console.log(greatestProduct(matrix));
